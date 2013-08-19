@@ -40,4 +40,26 @@ class AdminController extends Controller {
         ));
     }
 
+    public function siteEmailsAction() {
+        $contactUsFilePath = __DIR__ . '/../../../../app/Resources/views/Emails/contact_us.txt';
+        $initialData = array();
+        $initialData['contactUsText'] = file_get_contents($contactUsFilePath);
+        $form = $this->createFormBuilder($initialData)
+                ->add('contactUsText', 'textarea', array('constraints' => new Constraints\NotBlank(), 'required' => false, 'attr' => array('class' => 'ckeditor')))
+                ->getForm();
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $data = $form->getData();
+                file_put_contents($contactUsFilePath, $data['contactUsText']);
+                $request->getSession()->getFlashBag()->add('success', 'Saved Successfully');
+                $this->clearProductionCache();
+            }
+        }
+        return $this->render('ObjectsAdminBundle:Admin:siteEmails.html.twig', array(
+                    'form' => $form->createView()
+        ));
+    }
+
 }

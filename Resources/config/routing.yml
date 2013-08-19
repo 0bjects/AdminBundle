@@ -5,3 +5,7 @@ admin_home:
 admin_site_configurations:
     path:  /site/configurations
     defaults: { _controller: ObjectsAdminBundle:Admin:siteConfigurations }
+
+admin_site_emails:
+    path:  /site/emails
+    defaults: { _controller: ObjectsAdminBundle:Admin:siteEmails }

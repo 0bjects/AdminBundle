@@ -1,0 +1,44 @@
+{% extends 'ObjectsAdminBundle:General:base_admin.html.twig' %}
+
+{% block title %}{% trans %}Site Emails{% endtrans %}{% endblock %}
+
+{% block breadcrumb %}<li class="active">{% trans %}Site Emails{% endtrans %}</li>{% endblock %}
+
+{% block body %}
+
+{% for formError in form.vars.errors %}
+    <div class="alert alert-error">
+        {{ formError.message }}
+    </div>
+{% endfor %}
+
+{{ form_start(form, {'attr': {'class': 'form-horizontal'} }) }}
+    <legend><h3>{% trans %}Contact Us{% endtrans %}</h3></legend>
+    <div class="control-group">
+        <label class="control-label">
+            <legend class="text-left">{% trans %}Place Holders{% endtrans %}:</legend>
+            <ul class="unstyled text-left well">
+                <li>{{ '{{' }} name }}</li>
+                <li>{{ '{{' }} email }}</li>
+                <li>{{ '{{' }} message }}</li>
+            </ul>
+        </label>
+        <div class="controls">
+            {{ form_widget(form.contactUsText) }}
+            <span class="help-inline"></span>
+            {% for elementError in form.contactUsText.vars.errors %}
+            <div class="alert alert-error">
+                {{ elementError.message }}<a href="#" class="close" data-dismiss="alert">&times;</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <div class="pull-right">
+            <button type="reset" class="btn">{% trans %}Reset{% endtrans %}</button>
+            <button type="submit" class="btn btn-primary">{% trans %}Save changes{% endtrans %}</button>
+        </div>
+    </div>
+{{ form_end(form) }}
+{% endblock %}

@@ -29,9 +29,10 @@
 <a class="brand" href="{{ path('sonata_admin_dashboard') }}">Home</a>
 <div class="nav-collapse collapse">
     <ul class="nav">
-        <li><a href="{{ path('sonata_admin_dashboard') }}">{% trans %}Dashboard{% endtrans %}</a></li>
-        <li><a href="{{ path('admin_site_configurations') }}">{% trans %}Site Configurations{% endtrans %}</a></li>
-        <li><a href="{{ path('logout') }}">{% trans %}Logout{% endtrans %}</a></li>
+        <li><a href="{{ path('sonata_admin_dashboard') }}"><i class="icon-home"></i> {% trans %}Dashboard{% endtrans %}</a></li>
+        <li><a href="{{ path('admin_site_emails') }}"><i class="icon-envelope"></i> {% trans %}Site Emails{% endtrans %}</a></li>
+        <li><a href="{{ path('admin_site_configurations') }}"><i class="icon-wrench"></i> {% trans %}Site Configurations{% endtrans %}</a></li>
+        <li><a href="{{ path('logout') }}"><i class="icon-off"></i> {% trans %}Logout{% endtrans %}</a></li>
     </ul>
 </div>
 {% endblock %}

@@ -10,7 +10,7 @@ class LoadBlockData implements FixtureInterface {
 
     public function load(ObjectManager $manager) {
         $footerBlock = new Block();
-        $footerBlock->setName('footer-block');
+        $footerBlock->setName('footer-menu');
         $footerBlock->setContent('');
         $manager->persist($footerBlock);
         $manager->flush();

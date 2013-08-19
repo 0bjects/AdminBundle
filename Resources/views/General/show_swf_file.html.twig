@@ -1,0 +1,14 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field %}
+    {% if object.getSWFFileWebPath() %}
+    <object>
+        <param name="movie" value="{{ asset(object.getSWFFileWebPath()) }}"/>
+        <param name="allowFullScreen" value="true"/>
+        <param name="allowscriptaccess" value="always"/>
+        <embed src="{{ asset(object.getSWFFileWebPath()) }}" type="application/x-shockwave-flash" width="100%" allowscriptaccess="always" allowfullscreen="true" />
+    </object>
+    {% else %}
+    NULL
+    {% endif %}
+{% endblock %}

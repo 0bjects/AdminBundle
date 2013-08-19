@@ -1,0 +1,7 @@
+admin_home:
+    path:  /
+    defaults: { _controller: SonataAdminBundle:Core:dashboard }
+
+admin_site_configurations:
+    path:  /site/configurations
+    defaults: { _controller: ObjectsAdminBundle:Admin:siteConfigurations }

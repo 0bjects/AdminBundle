@@ -1,0 +1,9 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    {% if object.getSWFFileWebPath() %}
+    <a href="{{ asset(object.getSWFFileWebPath()) }}" target="_blank" title="{{ object }}">{{ object.fileName }}</a>
+    {% else %}
+    NULL
+    {% endif %}
+{% endblock %}

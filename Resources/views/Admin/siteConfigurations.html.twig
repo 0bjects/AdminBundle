@@ -1,0 +1,38 @@
+{% extends 'ObjectsAdminBundle:General:base_admin.html.twig' %}
+
+{% block title %}{% trans %}Site Configurations{% endtrans %}{% endblock %}
+
+{% block breadcrumb %}<li class="active">{% trans %}Site Configurations{% endtrans %}</li>{% endblock %}
+
+{% block body %}
+
+{% for formError in form.vars.errors %}
+    <div class="alert alert-error">
+        {{ formError.message }}
+    </div>
+{% endfor %}
+
+{{ form_start(form, {'attr': {'class': 'form-horizontal'} }) }}
+    <legend>{% trans %}Site Configurations{% endtrans %}</legend>
+
+    {% for parameter in parameters %}
+    <div class="control-group{% if attribute(form, parameter).vars.errors | length > 0 %} error{% endif %}">
+        {{ form_label(attribute(form, parameter), null, {'label_attr': {'class': 'control-label'} }) }}
+        <div class="controls">
+            {{ form_widget(attribute(form, parameter)) }}
+            <span class="help-inline"></span>
+            {% for elementError in attribute(form, parameter).vars.errors %}
+            <span class="help-block">
+                {{ elementError.message }}
+            </span>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">{% trans %}Save changes{% endtrans %}</button>
+        <button type="reset" class="btn">{% trans %}Reset{% endtrans %}</button>
+    </div>
+{{ form_end(form) }}
+{% endblock %}

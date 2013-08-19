@@ -1,9 +1,5 @@
 <?php
 
-/**
- * @author mahmoud
- */
-
 namespace Objects\UserBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;

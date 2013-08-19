@@ -4,3 +4,8 @@ services:
       tags:
          - { name: sonata.admin, manager_type: orm, label: Page }
       arguments: [null, Objects\AdminBundle\Entity\Page, ObjectsAdminBundle:PageAdmin]
+    block_admin:
+      class: Objects\AdminBundle\Admin\BlockAdmin
+      tags:
+         - { name: sonata.admin, manager_type: orm, label: Block }
+      arguments: [null, Objects\AdminBundle\Entity\Block, ObjectsAdminBundle:BlockAdmin]

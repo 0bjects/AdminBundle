@@ -61,6 +61,14 @@ $(document).ready(function() {
         self.parent().css('display', 'block');
         self.parent().append('<span class="add-on" onclick="$(this).prev().focus();"><i class="icon-calendar"></i></span>');
     });
+    $('input[data-class="time"]').livequery(function() {
+        var self = $(this);
+        self.prop('type','text');
+        self.timepicker();
+        self.parent().addClass('input-append');
+        self.parent().css('display', 'block');
+        self.parent().append('<span class="add-on" onclick="$(this).prev().focus();"><i class="icon-globe"></i></span>');
+    });
     $('.chzn-select').livequery(function() {
         $(this).chosen();
     });

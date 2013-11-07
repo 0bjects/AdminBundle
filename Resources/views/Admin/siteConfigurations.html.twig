@@ -6,33 +6,39 @@
 
 {% block body %}
 
-{% for formError in form.vars.errors %}
-    <div class="alert alert-error">
-        {{ formError.message }}
-    </div>
-{% endfor %}
-
-{{ form_start(form, {'attr': {'class': 'form-horizontal'} }) }}
-    <legend>{% trans %}Site Configurations{% endtrans %}</legend>
-
-    {% for parameter in parameters %}
-    <div class="control-group{% if attribute(form, parameter).vars.errors | length > 0 %} error{% endif %}">
-        {{ form_label(attribute(form, parameter), null, {'label_attr': {'class': 'control-label'} }) }}
-        <div class="controls">
-            {{ form_widget(attribute(form, parameter)) }}
-            <span class="help-inline"></span>
-            {% for elementError in attribute(form, parameter).vars.errors %}
-            <span class="help-block">
-                {{ elementError.message }}
-            </span>
-            {% endfor %}
+{% if form %}
+    {% for formError in form.vars.errors %}
+        <div class="alert alert-error">
+            {{ formError.message }}
         </div>
-    </div>
     {% endfor %}
 
-    <div class="form-actions">
-        <button type="reset" class="btn">{% trans %}Reset{% endtrans %}</button>
-        <button type="submit" class="btn btn-primary">{% trans %}Save changes{% endtrans %}</button>
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'} }) }}
+        <legend>{% trans %}Site Configurations{% endtrans %}</legend>
+
+        {% for parameter in parameters %}
+        <div class="control-group{% if attribute(form, parameter).vars.errors | length > 0 %} error{% endif %}">
+            {{ form_label(attribute(form, parameter), null, {'label_attr': {'class': 'control-label'} }) }}
+            <div class="controls">
+                {{ form_widget(attribute(form, parameter)) }}
+                <span class="help-inline"></span>
+                {% for elementError in attribute(form, parameter).vars.errors %}
+                <span class="help-block">
+                    {{ elementError.message }}
+                </span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="form-actions">
+            <button type="reset" class="btn">{% trans %}Reset{% endtrans %}</button>
+            <button type="submit" class="btn btn-primary">{% trans %}Save changes{% endtrans %}</button>
+        </div>
+    {{ form_end(form) }}
+{% else %}
+    <div class="alert alert-block alert-error">
+        No parameters found!
     </div>
-{{ form_end(form) }}
+{% endif %}
 {% endblock %}

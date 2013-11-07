@@ -19,24 +19,30 @@ class AdminController extends Controller {
     public function siteConfigurationsAction() {
         $configFilePath = __DIR__ . '/../../SiteBundle/Resources/config/config.yml';
         $parsedData = Yaml::parse(file_get_contents($configFilePath));
-        $formBuilder = $this->createFormBuilder($parsedData['parameters']);
-        $parameters = array_keys($parsedData['parameters']);
-        foreach ($parameters as $parameter) {
-            $formBuilder->add($parameter, 'text', array('constraints' => new Constraints\NotBlank()));
-        }
-        $form = $formBuilder->getForm();
-        $request = $this->getRequest();
-        if ($request->getMethod() == 'POST') {
-            $form->handleRequest($request);
-            if ($form->isValid()) {
-                file_put_contents($configFilePath, Yaml::dump(array('parameters' => $form->getData()), 3));
-                $request->getSession()->getFlashBag()->add('success', 'Saved Successfully');
-                $this->clearProductionCache();
+        if (!isset($parsedData['parameters']) || !$parsedData['parameters']) {
+            $parameters = null;
+            $formView = null;
+        } else {
+            $formBuilder = $this->createFormBuilder($parsedData['parameters']);
+            $parameters = array_keys($parsedData['parameters']);
+            foreach ($parameters as $parameter) {
+                $formBuilder->add($parameter, 'text', array('constraints' => new Constraints\NotBlank()));
             }
+            $form = $formBuilder->getForm();
+            $request = $this->getRequest();
+            if ($request->getMethod() == 'POST') {
+                $form->handleRequest($request);
+                if ($form->isValid()) {
+                    file_put_contents($configFilePath, Yaml::dump(array('parameters' => $form->getData()), 3));
+                    $request->getSession()->getFlashBag()->add('success', 'Saved Successfully');
+                    $this->clearProductionCache();
+                }
+            }
+            $formView = $form->createView();
         }
         return $this->render('ObjectsAdminBundle:Admin:siteConfigurations.html.twig', array(
                     'parameters' => $parameters,
-                    'form' => $form->createView()
+                    'form' => $formView
         ));
     }
 

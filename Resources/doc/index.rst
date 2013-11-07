@@ -56,6 +56,7 @@ sonata_admin:
                 items:
                     - page_admin
                     - block_admin
+                    - banner_admin
 
 sonata_block:
     default_contexts: [cms]

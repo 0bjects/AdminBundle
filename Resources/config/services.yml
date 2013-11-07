@@ -9,3 +9,8 @@ services:
       tags:
          - { name: sonata.admin, manager_type: orm, label: Block }
       arguments: [null, Objects\AdminBundle\Entity\Block, SonataAdminBundle:CRUD]
+    banner_admin:
+      class: Objects\AdminBundle\Admin\BannerAdmin
+      tags:
+         - { name: sonata.admin, manager_type: orm, label: Banner }
+      arguments: [null, Objects\AdminBundle\Entity\Banner, SonataAdminBundle:CRUD]

@@ -447,14 +447,12 @@ class Banner {
         }
     }
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -464,20 +462,18 @@ class Banner {
      * @param string $code
      * @return Banner
      */
-    public function setCode($code)
-    {
+    public function setCode($code) {
         $this->code = $code;
-    
+
         return $this;
     }
 
     /**
      * Get code
      *
-     * @return string 
+     * @return string
      */
-    public function getCode()
-    {
+    public function getCode() {
         return $this->code;
     }
 
@@ -487,20 +483,18 @@ class Banner {
      * @param string $url
      * @return Banner
      */
-    public function setUrl($url)
-    {
+    public function setUrl($url) {
         $this->url = $url;
-    
+
         return $this;
     }
 
     /**
      * Get url
      *
-     * @return string 
+     * @return string
      */
-    public function getUrl()
-    {
+    public function getUrl() {
         return $this->url;
     }
 
@@ -510,20 +504,18 @@ class Banner {
      * @param string $position
      * @return Banner
      */
-    public function setPosition($position)
-    {
+    public function setPosition($position) {
         $this->position = $position;
-    
+
         return $this;
     }
 
     /**
      * Get position
      *
-     * @return string 
+     * @return string
      */
-    public function getPosition()
-    {
+    public function getPosition() {
         return $this->position;
     }
 
@@ -533,20 +525,18 @@ class Banner {
      * @param \DateTime $createdAt
      * @return Banner
      */
-    public function setCreatedAt($createdAt)
-    {
+    public function setCreatedAt($createdAt) {
         $this->createdAt = $createdAt;
-    
+
         return $this;
     }
 
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
-    public function getCreatedAt()
-    {
+    public function getCreatedAt() {
         return $this->createdAt;
     }
 
@@ -556,20 +546,18 @@ class Banner {
      * @param integer $numberOfClicks
      * @return Banner
      */
-    public function setNumberOfClicks($numberOfClicks)
-    {
+    public function setNumberOfClicks($numberOfClicks) {
         $this->numberOfClicks = $numberOfClicks;
-    
+
         return $this;
     }
 
     /**
      * Get numberOfClicks
      *
-     * @return integer 
+     * @return integer
      */
-    public function getNumberOfClicks()
-    {
+    public function getNumberOfClicks() {
         return $this->numberOfClicks;
     }
 
@@ -579,20 +567,19 @@ class Banner {
      * @param integer $numberOfViews
      * @return Banner
      */
-    public function setNumberOfViews($numberOfViews)
-    {
+    public function setNumberOfViews($numberOfViews) {
         $this->numberOfViews = $numberOfViews;
-    
+
         return $this;
     }
 
     /**
      * Get numberOfViews
      *
-     * @return integer 
+     * @return integer
      */
-    public function getNumberOfViews()
-    {
+    public function getNumberOfViews() {
         return $this->numberOfViews;
     }
+
 }

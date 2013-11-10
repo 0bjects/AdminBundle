@@ -13,4 +13,4 @@ services:
       class: Objects\AdminBundle\Admin\BannerAdmin
       tags:
          - { name: sonata.admin, manager_type: orm, label: Banner }
-      arguments: [null, Objects\AdminBundle\Entity\Banner, SonataAdminBundle:CRUD]
+      arguments: [null, Objects\AdminBundle\Entity\Banner, ObjectsAdminBundle:Banner]

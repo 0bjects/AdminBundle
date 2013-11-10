@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Objects\AdminBundle\Entity\Banner
  * @Assert\Callback(methods={"isImageCorrect"})
  * @Assert\Callback(methods={"isFlashCorrect"})
+ * @Assert\Callback(methods={"isBannerCorrect"})
  * @ORM\Table()
  * @ORM\HasLifecycleCallbacks
  * @ORM\Entity(repositoryClass="Objects\AdminBundle\Entity\BannerRepository")
@@ -427,23 +428,31 @@ class Banner {
 
     /**
      * this function will check if no url with image
-     * @author Ahmed
      * @param \Symfony\Component\Validator\ExecutionContext $context
      */
     public function isImageCorrect(ExecutionContext $context) {
         if ($this->image && !$this->url) {
-            $context->addViolationAtSubPath('url', 'You must add url');
+            $context->addViolationAtSubPath('url', 'You must add url for the image.');
         }
     }
 
     /**
      * this function will check if no url with flash
-     * @author Ahmed
      * @param \Symfony\Component\Validator\ExecutionContext $context
      */
     public function isFlashCorrect(ExecutionContext $context) {
         if ($this->fileName && !$this->url) {
-            $context->addViolationAtSubPath('url', 'You must add url');
+            $context->addViolationAtSubPath('url', 'You must add url for the flash.');
+        }
+    }
+
+    /**
+     * this function will check if no code, flash or image provided
+     * @param \Symfony\Component\Validator\ExecutionContext $context
+     */
+    public function isBannerCorrect(ExecutionContext $context) {
+        if (!$this->fileName && !$this->image && !$this->code) {
+            $context->addViolation('You must add image, flash or code.');
         }
     }
 

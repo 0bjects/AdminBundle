@@ -3,6 +3,7 @@
 namespace Objects\AdminBundle\Admin;
 
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -77,7 +78,7 @@ class BannerAdmin extends Admin {
         );
         if ($this->getSubject() && $this->getSubject()->getId() && $this->getSubject()->getImage()) {
             $imageAttributes['data-image-url'] = $this->getRequest()->getBasePath() . '/' . $this->getSubject()->getSmallImageUrl(60, 60);
-//            $imageAttributes['data-image-remove-url'] = $this->getConfigurationPool()->getContainer()->get('router')->generate('admin_remove_customer_image', array('customerId' => $this->getSubject()->getId()));
+            $imageAttributes['data-image-remove-url'] = $this->generateObjectUrl('remove_image', $this->getSubject());
         }
         $formMapper
                 ->with('Required fields')
@@ -88,6 +89,10 @@ class BannerAdmin extends Admin {
                 ->add('file', 'file', array('required' => false, 'label' => 'image', 'attr' => $imageAttributes))
                 ->end()
         ;
+    }
+
+    public function configureRoutes(RouteCollection $collection) {
+        $collection->add('remove_image', $this->getRouterIdParameter() . '/remove-image');
     }
 
 }

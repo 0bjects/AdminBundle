@@ -29,7 +29,10 @@ $(document).ready(function() {
     });
     CKEDITOR.replaceAll('ckeditor');
     $('input[data-image-url]').livequery(function() {
-        $(this).parent().append('<img class="imageThumb" width="60" height="60" src="' + $(this).attr('data-image-url') + '"/>');//<a class="removeImage" style="margin-left: 7px;" href="javascript:void(0)" onclick="removeImage(this);"><i class="icon-remove"></i></a>');
+        $(this).parent().append('<img class="imageThumb" width="60" height="60" src="' + $(this).attr('data-image-url') + '"/>');
+    });
+    $('input[data-image-remove-url]').livequery(function() {
+        $(this).parent().append('<a class="removeImage" style="margin-left: 7px;" href="javascript:void(0)" onclick="removeImage(this);"><i class="icon-remove"></i></a>');
     });
     $('input[data-class="datetime"]').livequery(function() {
         var self = $(this);

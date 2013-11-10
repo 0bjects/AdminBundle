@@ -28,7 +28,7 @@ class BannerAdmin extends Admin {
         $listMapper
                 ->addIdentifier('id')
                 ->add('code')
-                ->add('url')
+                ->add('url', null, array('template' => 'ObjectsAdminBundle:General:list_url.html.twig'))
                 ->add('position')
                 ->add('createdAt')
                 ->add('numberOfClicks')
@@ -49,7 +49,7 @@ class BannerAdmin extends Admin {
         $showMapper
                 ->add('id')
                 ->add('code')
-                ->add('url')
+                ->add('url', null, array('template' => 'ObjectsAdminBundle:General:show_url.html.twig'))
                 ->add('position')
                 ->add('createdAt')
                 ->add('numberOfClicks')

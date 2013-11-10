@@ -19,7 +19,7 @@ class BannerRepository extends EntityRepository {
     public function increaseNumberOfViews(array $bannersIds) {
         if (count($bannersIds) > 0) {
             $this->getEntityManager()->createQuery('
-                UPDATE ObjectsSiteBundle:Banner b
+                UPDATE ObjectsAdminBundle:Banner b
                 set b.numberOfViews = b.numberOfViews + 1
                 WHERE b.id IN(:bannersIds)
             ')->setParameter('bannersIds', $bannersIds)->execute();
@@ -32,7 +32,7 @@ class BannerRepository extends EntityRepository {
      */
     public function incrementBannerNoOfClicksAction($id) {
         $this->getEntityManager()->createQuery('
-            UPDATE ObjectsSiteBundle:Banner b
+            UPDATE ObjectsAdminBundle:Banner b
             set b.numberOfClicks = b.numberOfClicks + 1
             WHERE b.id = :id
             ')->setParameter('id', $id)->execute();

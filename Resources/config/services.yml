@@ -14,3 +14,8 @@ services:
       tags:
          - { name: sonata.admin, manager_type: orm, label: Banner }
       arguments: [null, Objects\AdminBundle\Entity\Banner, ObjectsAdminBundle:Banner]
+#    user_admin:
+#        class: Objects\AdminBundle\Admin\UserAdmin
+#        arguments: [~, Objects\UserBundle\Entity\User, ObjectsAdminBundle:User]
+#        tags:
+#            - {name: sonata.admin, manager_type: orm, group: admin, label: User}

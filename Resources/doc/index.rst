@@ -57,6 +57,7 @@ sonata_admin:
                     - page_admin
                     - block_admin
                     - banner_admin
+#                    - user_admin
 
 sonata_block:
     default_contexts: [cms]
@@ -71,3 +72,7 @@ app/console doctrine:schema:update --force
 
 9.load the fixture files
 app/console doctrine:fixtures:load --append
+
+optional:
+enable the login routes if you do not have the user bundle installed
+enable the user admin service in the configuration files if you need it

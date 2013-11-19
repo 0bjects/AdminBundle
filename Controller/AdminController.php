@@ -27,7 +27,11 @@ class AdminController extends Controller {
             $formBuilder = $this->createFormBuilder($parsedData['parameters']);
             $parameters = array_keys($parsedData['parameters']);
             foreach ($parameters as $parameter) {
-                $formBuilder->add($parameter, 'text', array('constraints' => new Constraints\NotBlank()));
+                if (preg_match('/email$/i', $parameter) === 1) {
+                    $formBuilder->add($parameter, 'email', array('constraints' => array(new Constraints\NotBlank(), new Constraints\Email())));
+                } else {
+                    $formBuilder->add($parameter, 'text', array('constraints' => new Constraints\NotBlank()));
+                }
             }
             $form = $formBuilder->getForm();
             $request = $this->getRequest();

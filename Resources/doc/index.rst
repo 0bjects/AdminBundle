@@ -22,7 +22,7 @@ objects_admin:
 
 # Login routes
 #login_check:
-#    path:  /login_check
+#    path:  /login-check
 #
 #logout:
 #    path:  /logout

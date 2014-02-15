@@ -31,7 +31,7 @@ class PageAdmin extends Admin {
                 ->add('metaKeywords')
                 ->add('_action', 'actions', array(
                     'actions' => array(
-                        'view' => array(),
+                        'show' => array(),
                         'edit' => array(),
                         'delete' => array(),
                     )

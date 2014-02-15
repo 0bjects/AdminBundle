@@ -37,7 +37,7 @@ class BannerAdmin extends Admin {
                 ->add('fileName', null, array('template' => 'ObjectsAdminBundle:General:list_swf_file.html.twig'))
                 ->add('_action', 'actions', array(
                     'actions' => array(
-                        'view' => array(),
+                        'show' => array(),
                         'edit' => array(),
                         'delete' => array(),
                     )

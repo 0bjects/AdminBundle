@@ -432,7 +432,7 @@ class Banner {
      */
     public function isImageCorrect(ExecutionContext $context) {
         if ($this->image && !$this->url) {
-            $context->addViolationAtSubPath('url', 'You must add url for the image.');
+            $context->addViolationAt('url', 'You must add url for the image.');
         }
     }
 
@@ -442,7 +442,7 @@ class Banner {
      */
     public function isFlashCorrect(ExecutionContext $context) {
         if ($this->fileName && !$this->url) {
-            $context->addViolationAtSubPath('url', 'You must add url for the flash.');
+            $context->addViolationAt('url', 'You must add url for the flash.');
         }
     }
 

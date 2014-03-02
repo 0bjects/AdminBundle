@@ -103,10 +103,14 @@ class UserAdmin extends Admin {
             $imageAttributes['data-image-url'] = $this->getRequest()->getBasePath() . '/' . $this->getSubject()->getSmallImageUrl(60, 60);
             $imageAttributes['data-image-remove-url'] = $this->generateObjectUrl('remove_image', $this->getSubject());
         }
+        $loginNameLabel = 'Slug';
+        if($this->getConfigurationPool()->getContainer()->getParameter('login_name_required')) {
+            $loginNameLabel = 'Login Name';
+        }
         $formMapper
                 ->with('Required Fields')
                 ->add('firstName')
-                ->add('loginName')
+                ->add('loginName', null, array('label' => $loginNameLabel))
                 ->add('email')
                 ->add('userPassword', 'repeated', array(
                     'required' => false,
@@ -134,9 +138,9 @@ class UserAdmin extends Admin {
      */
     public function getFormBuilder() {
         if (is_null($this->getSubject()->getId())) {
-            $this->formOptions = array('validation_groups' => array('signup'));
+            $this->formOptions = array('validation_groups' => array('signup', 'loginName'));
         } else {
-            $this->formOptions = array('validation_groups' => array('edit'));
+            $this->formOptions = array('validation_groups' => array('edit', 'loginName'));
         }
         $formBuilder = parent::getFormBuilder();
         return $formBuilder;

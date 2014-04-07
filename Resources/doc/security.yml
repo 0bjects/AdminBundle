@@ -25,7 +25,7 @@ security:
                 check_path: login_check
                 login_path: login
                 use_forward: true
-                default_target_path: /admin
+                default_target_path: admin_home
 
             logout:
                 path:   logout
